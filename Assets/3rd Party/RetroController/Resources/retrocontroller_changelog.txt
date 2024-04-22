@@ -1,0 +1,49 @@
+<b><color="orange">2.5 (November, 2020)</color></b>
+- Reduced GC for RetroController.
+- New <color="#AADBFF">RetroLadder</color> as Custom Movement; built-in marked as legacy.
+- New <color="#AADBFF">RetroWater</color> as Custom Movement; built-in marked as legacy.!
+- New Custom Movement: <color="#AADBFF">RetroGrapple</color>. <color="red">[Experimental]</color>
+- Access modifier changed from <color="#AADBFF">protected</color> to <color="#AADBFF">public</color> for the <color="#AADBFF">Accelerate</color> method.
+
+<b><color="#C67D00">2.4 (July 6, 2020)</color></b>
+- New <color="#AADBFF">UpdateController</color> method
+
+<b><color="#C67D00">2.3.4 (May 21, 2020)</color></b>
+- Fixed ground step detection on multiple orientations
+- Fixed not returning to standing state after ducking on slopes
+
+<b><color="#C67D00">2.3.2 Hotfix (April 8, 2020)</color></b>
+- New <color="#AADBFF">Controller Rigidbody</color> Property
+- Fixed <color="#AADBFF">Ducking</color> in all gravity orientations
+- Fixed <color="#AADBFF">Soldier Animation</color> positioning
+- Fixed <color="#AADBFF">Controller Gizmos</color>
+- <color="#FFAAAA">Known issues:</color>
+  > walking on stairs in non Y-axis oriented gravity
+  > proper animation in non Y-axis oriented gravity (doesn't affect gameplay)
+
+<b><color="#C67D00">2.3.1 (March 23, 2020)</color></b>
+- Fixed Retro Double Jump bug.
+
+<b><color="#C67D00">2.3 (March 7, 2020)</color></b>
+- Fixed ground detection for Unity 2018.3+
+- Added <color="#AADBFF">MaxSpeedScale</color> for the Profile
+- New <color="#AADBFF">Bunnyhop Playground</color> scene
+
+<b><color="#C67D00">2.2 (Feb 24, 2020)</color></b>
+- Added support for multiple gravity directions
+- Added new <color="#AADBFF">OnLanding</color> callback
+- Fixed Ledge Grab clipping bug
+
+<b><color="#C67D00">2.1 (Jan 18, 2020)</color></b>
+- Added <color="#AADBFF">Crouch Slide, Double Jump and Ledge Grab</color> custom movements.
+- New tutorial scene showing the custom movements.
+- New sample character animations.
+
+<b><color="#C67D00">2.0 (Sep 18, 2019)</color></b>
+- Support for custom movement, samples coming soon.
+- Controller now uses rigidbody with interpolation.
+- Option to reimport necessary tags.
+- Reworked camera smoothing on steps.
+- Support for moving platforms.
+- Changed property accessibility on scripts.
+- New Tutorial scene
