@@ -5,6 +5,7 @@ public class WeaponSway : MonoBehaviour
     public GameObject weaponMesh;
     public GameObject impactEffect;
     public ParticleSystem muzzleFlash;
+    public GameObject bloodEffect;
     public float swayAmount = 0.02f; // Intensidade do sway
     public float maxSwayAmount = 0.06f; // Máximo que a arma pode se mover
     public float swaySmoothAmount = 4f; // Suavização do sway
@@ -53,16 +54,33 @@ public class WeaponSway : MonoBehaviour
             targetPosition += new Vector3(0f, walkOffset, 0f);
         }
 
-        // Adicione recuo do tiro quando o jogador pressionar o botão do mouse 0
-        if (Input.GetMouseButtonDown(0) && !IsShootingAnimationPlaying("revolver_shot") && !IsShootingAnimationPlaying("revolver_trigger"))
+        if(gameObject.tag == "WP_Single")
         {
-            weaponAnimator.SetTrigger("IsTrigger");
-        } else if (Input.GetMouseButtonUp(0) && !IsShootingAnimationPlaying("revolver_shot") && IsShootingAnimationPlaying("revolver_trigger")) {
-            Shoot();
-            weaponAnimator.SetTrigger("IsShot");
+            if (Input.GetMouseButtonDown(0) && !IsShootingAnimationPlaying("revolver_shot") && !IsShootingAnimationPlaying("revolver_trigger"))
+            {
+                weaponAnimator.SetTrigger("IsTrigger");
+            } else if (Input.GetMouseButtonUp(0) && !IsShootingAnimationPlaying("revolver_shot") && IsShootingAnimationPlaying("revolver_trigger")) {
+                Shoot();
+                weaponAnimator.SetTrigger("IsShot");
+            }
+        } else if (gameObject.tag == "WP_Right") {
+            if (Input.GetMouseButtonDown(1) && !IsShootingAnimationPlaying("revolver_shot") && !IsShootingAnimationPlaying("revolver_trigger"))
+            {
+                weaponAnimator.SetTrigger("IsTrigger");
+            } else if (Input.GetMouseButtonUp(1) && !IsShootingAnimationPlaying("revolver_shot") && IsShootingAnimationPlaying("revolver_trigger")) {
+                Shoot();
+                weaponAnimator.SetTrigger("IsShot");
+            }
+        } else if (gameObject.tag == "WP_Left") {
+            if (Input.GetMouseButtonDown(0) && !IsShootingAnimationPlaying("revolver_shot") && !IsShootingAnimationPlaying("revolver_trigger"))
+            {
+                weaponAnimator.SetTrigger("IsTrigger");
+            } else if (Input.GetMouseButtonUp(0) && !IsShootingAnimationPlaying("revolver_shot") && IsShootingAnimationPlaying("revolver_trigger")) {
+                Shoot();
+                weaponAnimator.SetTrigger("IsShot");
+            }
         }
 
-        // Suavize o movimento
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition + initialPosition, Time.deltaTime * swaySmoothAmount);
     }
 
@@ -74,7 +92,9 @@ public class WeaponSway : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            if (hit.transform.tag == "Enemy"){
+            if (hit.transform.tag == "Enemy" || hit.transform.tag == "Enemy_Boid"){
+                GameObject impactBloodGO = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impactBloodGO, 2f);
                 hit.transform.GetComponent<EnemyController>().TakeHit(Random.Range(11, 15));
             }
             

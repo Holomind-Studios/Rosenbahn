@@ -74,22 +74,22 @@ MonoBehaviour:
     m_Value: 0
   isAdditionalLayerEnabled:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   fogFalloffModeLayer1:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   colorLayer1:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.6132076, g: 0, b: 0, a: 1}
   distanceMinLayer1:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   distanceMaxLayer1:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 100
   fogFalloffCurveLayer1:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -0.15
   heightFalloffEnabledLayer1:
     m_OverrideState: 0
     m_Value: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Value: 1
   geometry:
     m_OverrideState: 1
-    m_Value: 0.75
+    m_Value: 0.85
   geometryPushbackEnabled:
     m_OverrideState: 1
     m_Value: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
     m_Value: 1
   weight:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 0
   accuracy:
     m_OverrideState: 1
     m_Value: 0.5

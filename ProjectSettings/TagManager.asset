@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Platform
   - Enemy
+  - WP_Right
+  - WP_Left
+  - WP_Single
+  - BloodContainer
+  - Enemy_Boid
   layers:
   - Default
   - TransparentFX
@@ -13,9 +18,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Blood
+  - Enemy
+  - BoidsObstacle
   - 
   - 
   - 
