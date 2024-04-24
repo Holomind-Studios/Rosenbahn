@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4803063076238439558}
   m_Layer: 6
   m_Name: blood_imp_1
-  m_TagString: Untagged
+  m_TagString: Blood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

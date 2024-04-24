@@ -11,6 +11,10 @@ TagManager:
   - WP_Single
   - BloodContainer
   - Enemy_Boid
+  - Blood
+  - Fountain
+  - WishFountain
+  - Refuel
   layers:
   - Default
   - TransparentFX

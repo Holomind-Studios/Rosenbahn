@@ -25,12 +25,12 @@ MonoBehaviour:
   DuckingViewOffset: 0.8
   DuckingLerp: 1
   DuckingLerpSpeed: 8
-  MaxGroundSpeed: 0.18
+  MaxGroundSpeed: 0.15
   MaxGroundSprintSpeed: 0.3
   MaxAirSpeed: 2
   MaxAirSprintSpeed: 0
   MaxWaterSpeed: 0.1
-  MaxDuckingSpeed: 0.14
+  MaxDuckingSpeed: 0.1
   MaxVerticalSpeedScale: 2
   MaxSpeedScale: {x: 9, y: 2, z: 9}
   LadderSpeed: 0.08

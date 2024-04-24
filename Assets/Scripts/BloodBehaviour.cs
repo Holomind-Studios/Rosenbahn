@@ -1,13 +1,18 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BloodBehaviour : MonoBehaviour
 {
     public GameObject[] bloodOBJ;
 
     private GameObject bloodContainer;
+    private List<GameObject> bloodList = new List<GameObject>();
+    private int bloodCounter = 0;
+    private GameObject gameController;
 
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         bloodContainer = GameObject.FindGameObjectWithTag("BloodContainer");
     }
 
@@ -33,6 +38,9 @@ public class BloodBehaviour : MonoBehaviour
                     // Instancia um novo objeto para armazenar a instância da prefab
                     GameObject bloodInstance = Instantiate(bloodInstancePrefab, collisionPoint - (new Vector3(0, 0.25f, 0)), collisionRotation);
                     bloodInstance.transform.parent = bloodContainer.transform;
+
+                    gameController.GetComponent<GameController>().bloodCounter = gameController.GetComponent<GameController>().bloodCounter + 1;
+                    gameController.GetComponent<GameController>().bloodList.Add(bloodInstance);
                 }
             }
         }

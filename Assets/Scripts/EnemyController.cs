@@ -5,9 +5,10 @@ public class EnemyController : MonoBehaviour
 {
     public string enemyName;
     public int enemyHP;
+    public bool runner;
+    public bool faster;
 
     [Space]
-    public Transform player; // Referência para o jogador
     public GameObject enemyBaseMesh;
     public float chaseDistance = 10f; // Distância de perseguição
     public float stoppingDistance = 1f; // Distância de parada
@@ -20,9 +21,11 @@ public class EnemyController : MonoBehaviour
     // Referência para o colisor que você deseja desativar
     private Collider enemyCollider;
     private string enemyTag;
+    private Transform player; // Referência para o jogador
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         enemyTag = gameObject.tag;
         enemyCollider = gameObject.GetComponent<Collider>();
 
@@ -59,32 +62,51 @@ public class EnemyController : MonoBehaviour
             if (distanceToPlayer <= chaseDistance)
             {
                 // Define a posição do jogador como o destino do NavMeshAgent
-                navAgent.SetDestination(player.position);
-
+                if(navAgent.enabled){
+                    navAgent.SetDestination(player.position);
+                }
+                
                 if (isDead)
                 {
                     // Para o NavMeshAgent
-                    navAgent.isStopped = true;
+                    if(navAgent.enabled){
+                        navAgent.isStopped = true;
+                    }
+                    
                 } else {
                     // Verifica se o jogador está dentro da distância de parada
                     if (distanceToPlayer <= stoppingDistance)
                     {
                         // Para o NavMeshAgent
-                        navAgent.isStopped = true;
+                        if(navAgent.enabled){
+                            navAgent.isStopped = true;
+                        }
+                        enemyAnimator.SetBool("IsWalking", false);
                         enemyAnimator.SetBool("IsRunning", false);
+                        enemyAnimator.SetBool("IsFaster", false);
                     }
                     else
                     {
                         // Continua seguindo o jogador
-                        navAgent.isStopped = false;
-                        enemyAnimator.SetBool("IsRunning", true);
+                        if(navAgent.enabled){
+                            navAgent.isStopped = false;
+                        }
+                        
+                        if (runner)
+                        {
+                            enemyAnimator.SetBool("IsRunning", true);
+                        } else if (faster) {
+                            enemyAnimator.SetBool("IsFaster", true);
+                        } else {
+                            enemyAnimator.SetBool("IsWalking", true);
+                        }
                     }
                 }
             }
         }
     }
 
-    public void TakeHit(int damage)
+    public bool TakeHit(int damage)
     {
         enemyHP -= damage;
 
@@ -101,11 +123,18 @@ public class EnemyController : MonoBehaviour
 
             if(enemyTag == "Enemy")
             {
+                if(navAgent.enabled){
+                    navAgent.enabled = false;
+                }
                 enemyAnimator.SetBool("IsDead", true);
             } else {
                 Destroy(gameObject);
             }
+
+            return true;
         }
+
+        return false;
     }
 
     void ResetMaterial()

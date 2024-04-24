@@ -21,9 +21,11 @@ public class WeaponSway : MonoBehaviour
     private Vector3 targetPosition; // Posição alvo da arma
     private Camera mainCamera; // Referência para a câmera principal
     private Animator weaponAnimator;
+    private GameObject gameController;
 
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         weaponAnimator = weaponMesh.GetComponent<Animator>();
         initialPosition = transform.localPosition;
         mainCamera = Camera.main; // Obtemos a referência para a câmera principal no início
@@ -90,12 +92,19 @@ public class WeaponSway : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 100f))
         {
-            Debug.Log(hit.transform.name);
-
             if (hit.transform.tag == "Enemy" || hit.transform.tag == "Enemy_Boid"){
-                GameObject impactBloodGO = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactBloodGO, 2f);
-                hit.transform.GetComponent<EnemyController>().TakeHit(Random.Range(11, 15));
+                int randomValue = Random.Range(0, 100);
+                if (randomValue <= 50)
+                {
+                    gameController.GetComponent<GameController>().collectedBloodCounter += Random.Range(40, 60);
+                    GameObject impactBloodGO = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(impactBloodGO, 2f);
+                }
+                bool isDead = hit.transform.GetComponent<EnemyController>().TakeHit(Random.Range(11, 15));
+                if(isDead){
+                    gameController.GetComponent<GameController>().CountKill();
+                    gameController.GetComponent<GameController>().deadEnemies.Add(hit.collider.gameObject);
+                }
             }
             
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(-hit.normal));

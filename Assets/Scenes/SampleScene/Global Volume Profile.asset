@@ -40,10 +40,10 @@ MonoBehaviour:
     m_Value: 0
   distanceMax:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 30
   fogFalloffCurve:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -0.5
   heightFalloffEnabled:
     m_OverrideState: 1
     m_Value: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
     m_Value: 0
   distanceMaxLayer1:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 200
   fogFalloffCurveLayer1:
     m_OverrideState: 1
     m_Value: -0.15
@@ -145,7 +145,7 @@ MonoBehaviour:
     m_Value: 320
   targetRasterizationResolutionHeight:
     m_OverrideState: 1
-    m_Value: 274
+    m_Value: 402
   isDepthBufferEnabled:
     m_OverrideState: 1
     m_Value: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
     m_Value: 1
   affineTextureWarping:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.35
   framebufferDither:
     m_OverrideState: 1
     m_Value: 0.5
